@@ -1,5 +1,5 @@
 InstantClick
-###
+---
 
 This is a slightly modified version of InstantClick 3.1.0. It makes it easier to prevent InstantClick from loading a page under certain conditions.
 
