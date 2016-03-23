@@ -303,6 +303,12 @@ var InstantClick = function(document, location) {
             $title = doc.title
             $body = doc.body
 
+            var canonicalUrl = $xhr.getResponseHeader('X-Canonical-URL');
+
+            if (canonicalUrl) {
+                $url = canonicalUrl
+            }
+
             var alteredOnReceive = triggerPageEvent('receive', $url, $body, $title)
             if (alteredOnReceive) {
                 if ('body' in alteredOnReceive) {
@@ -440,6 +446,14 @@ var InstantClick = function(document, location) {
         triggerPageEvent('fetch')
         $xhr.open('GET', url)
         $xhr.send()
+    }
+
+    function stacktrace() {
+        function st2(f) {
+            return !f ? [] :
+                st2(f.caller).concat([f.toString().split('(')[0].substring(9) + '(' + f.arguments.join(',') + ')']);
+        }
+        return st2(arguments.callee.caller);
     }
 
     function display(url) {
