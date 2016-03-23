@@ -6,6 +6,7 @@ This is a slightly modified version of InstantClick 3.1.0. It makes it easier to
 Additions in this version:
 - Add a `data-instant-manual` attribute to a link to prevent the regular InstantClick event handler from working. Preloading will still work.
 - Trigger the `InstantClick.openLink(href)` function to manually load a page. 
+- If you send an `X-Canonical-URL` header, InstantClick will display that URL and use it for history instead of the URL it originally navigated to. This helps you deal with issues that pop up when you redirect users with a `Location` header, for instance.
 
 License
 ---
